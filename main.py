@@ -1,4 +1,3 @@
-```python
 from fastapi import FastAPI
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
@@ -51,4 +50,3 @@ def verify_token(request: VerifyRequest):
             status_code=401,
             content={"valid": False},
         )
-```
