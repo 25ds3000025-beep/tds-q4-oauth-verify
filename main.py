@@ -29,6 +29,7 @@ def home():
     return {"message": "OAuth token verification service is running"}
 
 
+```python
 @app.post("/verify")
 def verify_token(request: VerifyRequest):
     try:
@@ -38,9 +39,7 @@ def verify_token(request: VerifyRequest):
             algorithms=["RS256"],
             issuer=ISSUER,
             audience=AUDIENCE,
-            options={
-                "require": ["exp", "iss", "aud", "sub", "email"]
-            },
+            options={"require": ["exp", "iss", "aud", "sub", "email"]},
         )
 
         return {
@@ -50,8 +49,9 @@ def verify_token(request: VerifyRequest):
             "aud": claims["aud"],
         }
 
-          except Exception:
+    except Exception:
         return JSONResponse(
             status_code=401,
-            content={"valid": False}
+            content={"valid": False},
         )
+```
