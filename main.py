@@ -1,4 +1,4 @@
-
+```python
 from fastapi import FastAPI
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
@@ -29,7 +29,6 @@ def home():
     return {"message": "OAuth token verification service is running"}
 
 
-```python
 @app.post("/verify")
 def verify_token(request: VerifyRequest):
     try:
@@ -41,14 +40,12 @@ def verify_token(request: VerifyRequest):
             audience=AUDIENCE,
             options={"require": ["exp", "iss", "aud", "sub", "email"]},
         )
-
         return {
             "valid": True,
             "email": claims["email"],
             "sub": claims["sub"],
             "aud": claims["aud"],
         }
-
     except Exception:
         return JSONResponse(
             status_code=401,
