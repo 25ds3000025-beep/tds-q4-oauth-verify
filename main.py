@@ -50,7 +50,7 @@ def verify_token(request: VerifyRequest):
             "aud": claims["aud"],
         }
 
-       except Exception:
+          except Exception:
         return JSONResponse(
             status_code=401,
             content={"valid": False}
